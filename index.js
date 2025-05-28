@@ -50,7 +50,7 @@ import cookieParser from "cookie-parser";
 
 // Initialize express app
 const app = express();
-
+app.use(express.json())
 app.use(cookieParser());
 app.use(cors({
     origin: 'http://localhost:5173',
@@ -66,5 +66,8 @@ app.use("/api", treatmentroutes);
 app.use("/api", messagesroutes);
 
 dbarea();
-
+let port=3000
+app.listen(port,()=>{
+    console.log(`server started${port}`)
+})
 export default app;
