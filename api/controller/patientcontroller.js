@@ -1,6 +1,5 @@
 
 import express from "express"
-import jwt from "jsonwebtoken"
 import patientshm from "../model/patientmodel.js"
 import { config } from "dotenv"
 config();

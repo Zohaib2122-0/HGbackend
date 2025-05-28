@@ -1,6 +1,6 @@
 import usershm from "../model/usermodel.js"
 import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
+import bcrypt from 'bcryptjs';
 
 
 export let registeruser = async (req, res) => {
@@ -27,7 +27,7 @@ export let registeruser = async (req, res) => {
 
 
         let hasspassword = await bcrypt.hash(password, 10)
-        
+
         let newusershm = await usershm.create({
             name,
             email,
