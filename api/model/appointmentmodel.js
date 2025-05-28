@@ -14,15 +14,6 @@ let appointmentshema = new mongoose.Schema({
 
 
 
-
-
-
-// const appointmentshema = new mongoose.Schema({
-//       patientId: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
-//       doctorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Doctor' },
-//       date: Date,
-//       status: { type: String, enum: ['Pending', 'Completed', 'Canceled'], default: 'Pending' },
-//     });
 let appointmentshm = mongoose.model("appointment model", appointmentshema)
 export default appointmentshm
 

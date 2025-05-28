@@ -4,16 +4,12 @@ import cors from "cors"
 
 import { app } from "./api/controller/patientcontroller.js";
 import billingroutes from "./api/routes/billingroutes.js";
-// import patientroutes from "../routes/patientroutes.js";
-// import treatmentroutes from "../routes/treatmentroutes.js";
-// import messagesroutes from "../routes/messagesroutes.js";
-// import userroutes from "../routes/userroutes.js";
-import cookieParser from "cookie-parser";
 import patientroutes from "./api/routes/patientroutes.js";
 import { userroutes } from "./api/routes/userroutes.js";
 import doctorroutes from "./api/routes/doctoreroutes.js";
 import treatmentroutes from "./api/routes/treatmentroutes.js";
 import messagesroutes from "./api/routes/messagesroutes.js";
+import cookieParser from "cookie-parser";
 let hm = () => {
     app.use(cookieParser())
     app.use(cors({

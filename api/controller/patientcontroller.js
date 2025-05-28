@@ -2,36 +2,35 @@
 import express from "express"
 import jwt from "jsonwebtoken"
 import patientshm from "../model/patientmodel.js"
-import bcrypt from "bcrypt"
 import { config } from "dotenv"
 config();
 export let app = express()
 app.use(express.json())
 
 
-let generatetoken = async (patientid) => {
+// let generatetoken = async (patientid) => {
 
-    let acesstoken = jwt.sign({ patientid }, process.env.secretkey1, { expiresIn: "30m" })
+//     let acesstoken = jwt.sign({ patientid }, process.env.secretkey1, { expiresIn: "30m" })
 
-    let refreshtoken = jwt.sign({ patientid }, process.env.secretkey2, { expiresIn: "7d" })
+//     let refreshtoken = jwt.sign({ patientid }, process.env.secretkey2, { expiresIn: "7d" })
 
 
-    return { acesstoken, refreshtoken }
-}
+//     return { acesstoken, refreshtoken }
+// }
 
-let generatecookies = (res, acesstoken, refreshtoken) => {
-    res.cookie("acesstoken", acesstoken, {
-        httponly: true,
-        secure: true,
-        maxAge: 30 * 60
+// let generatecookies = (res, acesstoken, refreshtoken) => {
+//     res.cookie("acesstoken", acesstoken, {
+//         httponly: true,
+//         secure: true,
+//         maxAge: 30 * 60
 
-    })
-    res.cookie("refreshtoken", refreshtoken, {
-        httponly: true,
-        secure: true,
-        maxAge: 7 * 24 * 60 * 60
-    })
-}
+//     })
+//     res.cookie("refreshtoken", refreshtoken, {
+//         httponly: true,
+//         secure: true,
+//         maxAge: 7 * 24 * 60 * 60
+//     })
+// }
 
 
 export let registerpatient = async (req, res) => {
@@ -39,20 +38,20 @@ export let registerpatient = async (req, res) => {
 
         let detail = req.body
         const { name, email, password, age, serialno, disease } = detail
-        let hasspassword = await bcrypt.hash(password, 10)
+
         let newpatientshm = await patientshm.create({
             name,
             email,
             age,
             serialno,
             disease,
-            password: hasspassword
+            password
         })
-        console.log(`${name},${email},${age},${serialno}, ${disease},${password}`)
+        
 
-        const { acesstoken, refreshtoken } = generatetoken(newpatientshm._id)
+        // const { acesstoken, refreshtoken } = generatetoken(newpatientshm._id)
         //    console.log(newpatientshm._id)
-        generatecookies(res, acesstoken, refreshtoken)
+        // generatecookies(res, acesstoken, refreshtoken)
         return res.status(200).json({ message: "user register sucessfully", newpatientshm })
     } catch (error) {
         return res.status(400).json({ message: error.message })

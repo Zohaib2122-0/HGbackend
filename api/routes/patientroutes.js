@@ -15,9 +15,6 @@ patientroutes.route("/loginpatient").post(loginpatient)
 
 
 
-
-
-
 patientroutes.route("/createappointment").post(createappointment)
 patientroutes.route("/getappointment").get(getappointment)
 

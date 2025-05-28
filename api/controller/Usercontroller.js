@@ -27,6 +27,7 @@ export let registeruser = async (req, res) => {
 
 
         let hasspassword = await bcrypt.hash(password, 10)
+        
         let newusershm = await usershm.create({
             name,
             email,

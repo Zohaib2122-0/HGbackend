@@ -7,7 +7,7 @@ let patientschema=new mongoose.Schema({
     age:{type:Number},
     serialno:{type:Number},
     disease:{type:String},
-    // role:{type:String , enum:["admin", "user"], default:"user"}
+ 
 })
 let patientshm= mongoose.model("patient model",patientschema)
 export default patientshm
