@@ -4,12 +4,6 @@
 import { dbarea } from "./config/dbarea.js";
 import cors from "cors"
 import express from "express";
-import billingroutes from "./api/routes/billingroutes.js";
-import patientroutes from "./api/routes/patientroutes.js";
-import { userroutes } from "./api/routes/userroutes.js";
-import doctorroutes from "./api/routes/doctoreroutes.js";
-import treatmentroutes from "./api/routes/treatmentroutes.js";
-import messagesroutes from "./api/routes/messagesroutes.js";
 import cookieParser from "cookie-parser";
 import { HGprojectroutes } from "./api/routes/HGproject.js";
 import { HGmessagesroutes } from "./api/routes/HGmessages.js";
@@ -17,7 +11,6 @@ import { HGmessagesroutes } from "./api/routes/HGmessages.js";
 // Initialize express app
 const app = express();
 app.use(express.json())
-app.use(cookieParser());
 app.use(cors({
     // origin: 'https://faisal-hm-frontend.vercel.app',
 
@@ -30,12 +23,7 @@ app.options("*", cors());
 
 app.use("/api", HGprojectroutes);
 app.use("/api", HGmessagesroutes);
-app.use("/api", patientroutes);
-app.use("/api", billingroutes);
-app.use("/api", userroutes);
-app.use("/api", doctorroutes);
-app.use("/api", treatmentroutes);
-app.use("/api", messagesroutes);
+
 
 dbarea();
 let port=3000
