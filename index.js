@@ -11,6 +11,8 @@ import doctorroutes from "./api/routes/doctoreroutes.js";
 import treatmentroutes from "./api/routes/treatmentroutes.js";
 import messagesroutes from "./api/routes/messagesroutes.js";
 import cookieParser from "cookie-parser";
+import { HGprojectroutes } from "./api/routes/HGproject.js";
+import { HGmessagesroutes } from "./api/routes/HGmessages.js";
 
 // Initialize express app
 const app = express();
@@ -26,6 +28,8 @@ origin: ["http://localhost:5173", "https://faisal-hm.vercel.app"],
 }));
 app.options("*", cors());
 
+app.use("/api", HGprojectroutes);
+app.use("/api", HGmessagesroutes);
 app.use("/api", patientroutes);
 app.use("/api", billingroutes);
 app.use("/api", userroutes);
